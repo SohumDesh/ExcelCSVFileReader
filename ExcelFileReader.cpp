@@ -16,9 +16,16 @@ void PrintArray(Array<String, 4> inputData) {
         std::cout << Data;
 }
 
-bool Sort(Array<String, 4> inputData) {
-
-    if (inputData[2] == " 7")
+bool Sort(Vector<Array<String, 4>> FileData) {
+    int i=0;
+    for (std::array<String, 4> Data : FileData) {
+        if (Data[2] == " 0") {//checking the grade
+            PrintArray(Data);
+            std::cout << std::endl;
+            i++;
+        }
+    }
+    if (i != 0)
         return true;
     else
         return false;
@@ -67,12 +74,11 @@ int main()
 
     TestFile.close();
 
-    for (std::array<String, 4> Data : FileData) {
-        if (Sort(Data)) {
-            PrintArray(Data);
-            std::cout << "\n";
-        }
-    }
+    if (!Sort(FileData)) // negative scenarios
+        std::cout << "No entries found";
+
+    //sort the 
+
 
     return 0;
 }
